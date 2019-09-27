@@ -1,0 +1,3 @@
+rosrun ar_track_alvar findMarkerBundlesNoKinect 6.7 0.1 0.1 /videofile/image_raw /videofile/camera_info videofile_frame '/home/matthias/Documents/table_8_9_10_2.xml'
+
+rosrun ar_track_alvar findMarkerBundlesNoKinect 6.7 0.1 0.1 /camera/rgb/image_raw /camera/rgb/camera_info camera_rgb_optical_frame /home/matthias/Documents/table_8_9_10_2.xml

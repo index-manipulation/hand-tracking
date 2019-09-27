@@ -1,0 +1,13 @@
+/root/catkin_build_ws/install/_setup_util.py
+/root/catkin_build_ws/install/env.sh
+/root/catkin_build_ws/install/setup.bash
+/root/catkin_build_ws/install/local_setup.bash
+/root/catkin_build_ws/install/setup.sh
+/root/catkin_build_ws/install/local_setup.sh
+/root/catkin_build_ws/install/setup.zsh
+/root/catkin_build_ws/install/local_setup.zsh
+/root/catkin_build_ws/install/.rosinstall
+/root/catkin_build_ws/install/lib/pkgconfig/catkin_tools_prebuild.pc
+/root/catkin_build_ws/install/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig.cmake
+/root/catkin_build_ws/install/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig-version.cmake
+/root/catkin_build_ws/install/share/catkin_tools_prebuild/package.xml

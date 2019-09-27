@@ -1,0 +1,10 @@
+In file included from [01m[K/root/catkin_build_ws/src/vision_opencv/cv_bridge/src/module.cpp:35:0[m[K:
+[01m[K/root/catkin_build_ws/src/vision_opencv/cv_bridge/src/module.hpp:[m[K In function '[01m[Kint do_numpy_import()[m[K':
+[01m[K/root/catkin_build_ws/src/vision_opencv/cv_bridge/src/module.hpp:39:5:[m[K [01;35m[Kwarning: [m[Kconverting to non-pointer type '[01m[Kint[m[K' from NULL [-Wconversion-null]
+     import_array( );
+[01;32m[K     ^[m[K
+In file included from [01m[K/root/catkin_build_ws/src/vision_opencv/cv_bridge/src/module_opencv3.cpp:3:0[m[K:
+[01m[K/root/catkin_build_ws/src/vision_opencv/cv_bridge/src/module.hpp:[m[K In function '[01m[Kint do_numpy_import()[m[K':
+[01m[K/root/catkin_build_ws/src/vision_opencv/cv_bridge/src/module.hpp:39:5:[m[K [01;35m[Kwarning: [m[Kconverting to non-pointer type '[01m[Kint[m[K' from NULL [-Wconversion-null]
+     import_array( );
+[01;32m[K     ^[m[K

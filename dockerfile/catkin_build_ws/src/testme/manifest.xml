@@ -1,0 +1,14 @@
+<package>
+  <description brief="testme">
+
+     testme
+
+  </description>
+  <author>root</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/testme</url>
+
+</package>
+
+

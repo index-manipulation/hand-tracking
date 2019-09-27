@@ -1,0 +1,8 @@
+prefix=/root/catkin_build_ws/devel/.private/cv_bridge
+
+Name: cv_bridge
+Description: Description of cv_bridge
+Version: 1.13.0
+Cflags: -I/root/catkin_build_ws/src/vision_opencv/cv_bridge/include -I/usr/local/include -I/usr/local/include/opencv
+Libs: -L/root/catkin_build_ws/devel/.private/cv_bridge/lib -lcv_bridge /usr/local/lib/libopencv_core.so.3.4.2 /usr/local/lib/libopencv_imgproc.so.3.4.2 /usr/local/lib/libopencv_imgcodecs.so.3.4.2
+Requires: rosconsole sensor_msgs

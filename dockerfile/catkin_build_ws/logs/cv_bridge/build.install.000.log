@@ -1,0 +1,59 @@
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target sensor_msgs_generate_messages_lisp
+[  0%] Built target sensor_msgs_generate_messages_cpp
+[  0%] Built target geometry_msgs_generate_messages_py
+[  0%] Built target sensor_msgs_generate_messages_py
+[  0%] Built target sensor_msgs_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target sensor_msgs_generate_messages_nodejs
+[  0%] Built target geometry_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target geometry_msgs_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target geometry_msgs_generate_messages_lisp
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[ 50%] Built target cv_bridge
+[100%] Built target cv_bridge_boost
+[36mInstall the project...[0m
+-- Install configuration: ""
+-- Installing: /root/catkin_build_ws/install/_setup_util.py
+-- Installing: /root/catkin_build_ws/install/env.sh
+-- Installing: /root/catkin_build_ws/install/setup.bash
+-- Installing: /root/catkin_build_ws/install/local_setup.bash
+-- Installing: /root/catkin_build_ws/install/setup.sh
+-- Installing: /root/catkin_build_ws/install/local_setup.sh
+-- Installing: /root/catkin_build_ws/install/setup.zsh
+-- Installing: /root/catkin_build_ws/install/local_setup.zsh
+-- Installing: /root/catkin_build_ws/install/.rosinstall
+-- Installing: /root/catkin_build_ws/install/lib/pkgconfig/cv_bridge.pc
+-- Installing: /root/catkin_build_ws/install/share/cv_bridge/cmake/cv_bridge-extras.cmake
+-- Installing: /root/catkin_build_ws/install/share/cv_bridge/cmake/cv_bridgeConfig.cmake
+-- Installing: /root/catkin_build_ws/install/share/cv_bridge/cmake/cv_bridgeConfig-version.cmake
+-- Installing: /root/catkin_build_ws/install/share/cv_bridge/package.xml
++ cd /root/catkin_build_ws/src/vision_opencv/cv_bridge
++ mkdir -p /root/catkin_build_ws/install/lib/python3/dist-packages
++ /usr/bin/env PYTHONPATH=/root/catkin_build_ws/install/lib/python3/dist-packages:/root/catkin_build_ws/build/cv_bridge/lib/python3/dist-packages:/opt/ros/kinetic/lib/python2.7/dist-packages:/root/caffe/python CATKIN_BINARY_DIR=/root/catkin_build_ws/build/cv_bridge /usr/bin/python3 /root/catkin_build_ws/src/vision_opencv/cv_bridge/setup.py build --build-base /root/catkin_build_ws/build/cv_bridge install --install-layout=deb --prefix=/root/catkin_build_ws/install --install-scripts=/root/catkin_build_ws/install/bin
+running build
+running build_py
+creating /root/catkin_build_ws/build/cv_bridge/lib
+creating /root/catkin_build_ws/build/cv_bridge/lib/cv_bridge
+copying python/cv_bridge/__init__.py -> /root/catkin_build_ws/build/cv_bridge/lib/cv_bridge
+copying python/cv_bridge/core.py -> /root/catkin_build_ws/build/cv_bridge/lib/cv_bridge
+running install
+running install_lib
+creating /root/catkin_build_ws/install/lib/python3/dist-packages/cv_bridge
+copying /root/catkin_build_ws/build/cv_bridge/lib/cv_bridge/__init__.py -> /root/catkin_build_ws/install/lib/python3/dist-packages/cv_bridge
+copying /root/catkin_build_ws/build/cv_bridge/lib/cv_bridge/core.py -> /root/catkin_build_ws/install/lib/python3/dist-packages/cv_bridge
+byte-compiling /root/catkin_build_ws/install/lib/python3/dist-packages/cv_bridge/__init__.py to __init__.cpython-35.pyc
+byte-compiling /root/catkin_build_ws/install/lib/python3/dist-packages/cv_bridge/core.py to core.cpython-35.pyc
+running install_egg_info
+Writing /root/catkin_build_ws/install/lib/python3/dist-packages/cv_bridge-1.13.0.egg-info
+-- Installing: /root/catkin_build_ws/install/include/cv_bridge
+-- Installing: /root/catkin_build_ws/install/include/cv_bridge/rgb_colors.h
+-- Installing: /root/catkin_build_ws/install/include/cv_bridge/cv_bridge.h
+-- Installing: /root/catkin_build_ws/install/lib/python3/dist-packages/cv_bridge/boost/__init__.py
+-- Installing: /root/catkin_build_ws/install/lib/libcv_bridge.so
+-- Set runtime path of "/root/catkin_build_ws/install/lib/libcv_bridge.so" to ""
+-- Installing: /root/catkin_build_ws/install/lib/python3/dist-packages/cv_bridge/boost/cv_bridge_boost.so
+-- Set runtime path of "/root/catkin_build_ws/install/lib/python3/dist-packages/cv_bridge/boost/cv_bridge_boost.so" to ""
