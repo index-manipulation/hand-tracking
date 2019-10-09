@@ -55,6 +55,7 @@ class wrapper():
 
         print("Initialize MVA19 CVRL Hand pose net...")
         self.estimator = mva19.Estimator(config["model_file"], config["input_layer"], config["output_layer"])
+        print("Initialize inference graph...")
         self.detection_graph, self.sess = detector_utils.load_inference_graph()
         self.started = True
         self.delay = {True: 0, False: 1}
@@ -64,6 +65,7 @@ class wrapper():
         self.stride = self.config["stride"]
         self.peaks_thre = self.config["peaks_thre"]
         self.joints_publisher = rospy.Publisher('/hand_tracker/joints_pose' if len(sys.argv) < 3 else sys.argv[2], Float32MultiArray, queue_size=1 )
+        rospy.loginfo('Done initializing...')
         
     def subscribe(self, topic):
         rospy.Subscriber(topic, Image, callback=self.callback)
@@ -229,6 +231,7 @@ if __name__ == "__main__":
         # "default_bbox": [322, 368, 110, 109],
     }
     
+    rospy.loginfo('Starting hand tracker')
     wrapper = wrapper((640,480), config,  track=track)
     wrapper.subscribe('/camera/rgb/image_rect_color' if len(sys.argv) < 2 else sys.argv[1])
     rospy.spin()

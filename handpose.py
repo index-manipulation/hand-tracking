@@ -277,9 +277,9 @@ if __name__ == '__main__':
     # acq = OpenCVGrabber(0, calib_file="res/calib_webcam_mshd_vga.json")
 
     # transform = pkl.load(open('transform1.pkl','rb'))
-    # acq = OpenCVGrabber('/dataset/AnnotationExperiments Videos/AnnotationExperiment1.ogv', calib_file="res/calib_webcam_mshd_vga.json")
-    acq = OpenCVGrabber(1, calib_file="res/calib_webcam_mshd_vga.json")
+    acq = OpenCVGrabber('/dataset/hand_example/output.avi', calib_file="res/calib_webcam_mshd_vga.json")
+    #acq = OpenCVGrabber(1, calib_file="res/calib_webcam_mshd_vga.json")
 
     acq.initialize()
-    mono_hand_loop(acq, (640,480), config,  track=True, with_renderer=False)
+    mono_hand_loop(acq, (640,480), config,  track=True, with_renderer=True)
     
