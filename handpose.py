@@ -209,15 +209,16 @@ def mono_hand_loop(acq, outSize, config, track=False, paused=False, with_rendere
         count += 1
 
 
-limbSeq = [[0, 1], [0, 5], [0, 9], [0, 13], [0, 17], # palm
-           [1, 2], [2, 3], [3,4], # thump
-           [5, 6], [6, 7], [7, 8], # index
-           [9, 10], [10, 11], [11, 12], # middle
-           [13, 14], [14, 15], [15, 16], # ring
-           [17, 18], [18, 19], [19, 20], # pinky
-        ]
+limbSeq = [[0, 1], [0, 5], [0, 9], [0, 13], [0, 17],  # palm
+           [1, 2], [2, 3], [3, 4],  # thump
+           [5, 6], [6, 7], [7, 8],  # index
+           [9, 10], [10, 11], [11, 12],  # middle
+           [13, 14], [14, 15], [15, 16],  # ring
+           [17, 18], [18, 19], [19, 20],  # pinky
+           ]
 
 final_result = []
+
 
 def to_AC_format(p3d):
     global transform
@@ -226,27 +227,26 @@ def to_AC_format(p3d):
     for i, pair in enumerate(limbSeq):
         a = p3d[pair[0]]
         b = p3d[pair[1]]
-        bone_center = _center(a,b)
+        bone_center = _center(a, b)
         tag = "boneCenter0"
         if i in range(5):
-            tag+=str(i)+'0'
+            tag += str(i)+'0'
         else:
             finger = int((i-5)/3)
             bone = (i-5) - finger*3 + 1
-            tag= tag + str(finger)+str(bone)
+            tag = tag + str(finger) + str(bone)
         if transform is not None:
-            bone_center = np.dot(transform, np.append(bone_center ,1))
+            bone_center = np.dot(transform, np.append(bone_center, 1))
 
         d[tag+'X'] = -bone_center[2]
         d[tag+'Y'] = -bone_center[0]
         d[tag+'Z'] = bone_center[1]
 
-
     final_result.append(d)
 
 
 def _center(a, b):
-    return [(v[0]+v[1])/2000 for v in list(zip(a,b)) ]
+    return [(v[0]+v[1])/2000 for v in list(zip(a, b))]
 
 
 if __name__ == '__main__':
