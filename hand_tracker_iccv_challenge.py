@@ -264,8 +264,8 @@ class HandTracker:
             p3d = to_iccv_format(p3d)
 
             # Save
-            saved_hand_poses.append(p3d)
-            saved_framed_ids.append(i_name)
+            # saved_hand_poses.append(p3d)
+            # saved_framed_ids.append(i_name)
 
             # Save any frames where a good score is achieved
             # score is the residual, the lower the better, 0 is best
@@ -273,8 +273,8 @@ class HandTracker:
                 print('Saved good pose:', i_name)
                 img_save_filename = join(self.monohand_image_path, i_name)
                 cv2.imwrite(img_save_filename, viz)
-                # saved_hand_poses.append(p3d)
-                # saved_framed_ids.append(i_name)
+                saved_hand_poses.append(p3d)
+                saved_framed_ids.append(i_name)
 
         # Save data
         save_annotation_file(self.joint_anno_path, saved_framed_ids, saved_hand_poses)
@@ -285,8 +285,8 @@ if __name__ == '__main__':
     parser.add_argument('--object-model', type=str, default='003_cracker_box', required=False,
                         help='Name of the object model')
     args = parser.parse_args()
-    args.frame_root_path = '/dataset/Hands/HANDS_Challenge_ICCV_2019/Task3/training_images'
-    args.object_anno_path = '/dataset/Hands/HANDS_Challenge_ICCV_2019/Task3/training_object_annotation.txt'
+    args.frame_root_path = '/dataset/Hands/HANDS_Challenge_ICCV_2019/Task3/training_images_small'
+    args.object_anno_path = '/dataset/Hands/HANDS_Challenge_ICCV_2019/Task3/training_object_annotation_small.txt'
     args.joint_anno_path = '/dataset/Hands/HANDS_Challenge_ICCV_2019/Task3/monohand_joint_annotation.txt'
     args.monohand_image_path = '/dataset/Hands/HANDS_Challenge_ICCV_2019/Task3/monohand_images'
 
