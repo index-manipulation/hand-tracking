@@ -82,9 +82,16 @@ class HandTracker:
 
         object_name = args.object_model
         if not object_name:
-            self.rgb_image, self.dep_image = self.get_images(args.rgb, args.depth)
+            im = 'image_C' + str(args.frame_id).zfill(8) + '.png'
+            rgb_filename = os.path.join(args.frame_root_path, im)
+            dep_filename = list(im)
+            dep_filename[6] = 'D'
+            dep_filename = ''.join(dep_filename)
+            dep_filename = os.path.join(args.depth_frame_root_path, dep_filename)
+            self.rgb_image, self.dep_image = self.get_images(rgb_filename, dep_filename)
+            print(im)
             points = self.process()
-            save_annotation_file(self.save_filename, [os.path.basename(args.rgb)], [points])
+            # save_annotation_file(self.save_filename, [os.path.basename(args.rgb)], [points])
         else:
             self.visualize = False
             image_names = get_image_names(args.object_anno_path, object_name)
@@ -101,6 +108,7 @@ class HandTracker:
                 processed_images.append(im)
                 processed_points.append(points)
                 save_annotation_file(self.save_filename, processed_images, processed_points)
+                print(im)
 
     def process(self):
         self.width = self.rgb_image.shape[1]
@@ -214,12 +222,8 @@ class HandTracker:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Hand tracker using OpenCV 2')
-    parser.add_argument('--rgb', type=str, required=False,
-                        default='/home/tpatten/Data/Hands/HANDS_Challenge_ICCV_2019/Task3/training_images/image_C00000000.png',
-                        help='Name of the rgb image')
-    parser.add_argument('--depth', type=str, required=False,
-                        default='/home/tpatten/Data/Hands/HANDS_Challenge_ICCV_2019/Task3/training_images_depth/image_D00000000.png',
-                        help='Name of the depth image')
+    parser.add_argument('--frame-id', type=int, default=0, required=False,
+                        help='Frame id of the corresponding image, eg. frame-id=0 -> IMG_C00000000.png')
     parser.add_argument('--object-model', type=str, default='', required=False,
                         help='Name of the object model')
     parser.add_argument('--visualize', action='store_true')
