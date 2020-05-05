@@ -58,7 +58,7 @@ def save_annotation_file(filename, frame_ids, hand_poses):
 
 
 def to_iccv_format(joints):
-    # MONPHAND [Wrist (0),
+    # MONOHAND [Wrist (0),
     #           TMCP (1), TPIP (2), TDIP (3), TTIP (4),
     #           IMCP (5), IPIP (6), IDIP (7), ITIP (8),
     #           MMCP (9), MPIP (10), MDIP (11), MTIP (12),

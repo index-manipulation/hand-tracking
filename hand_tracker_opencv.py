@@ -4,7 +4,6 @@ import cv2
 import time
 import numpy as np
 import argparse
-import copy
 
 
 POSE_PAIRS = [[0, 1], [1, 2], [2, 3], [3, 4],
@@ -49,7 +48,7 @@ def save_annotation_file(filename, frame_ids, hand_poses):
 
 
 def to_iccv_format(joints):
-    # MONPHAND [Wrist (0),
+    # MONOHAND [Wrist (0),
     #           TMCP (1), TPIP (2), TDIP (3), TTIP (4),
     #           IMCP (5), IPIP (6), IDIP (7), ITIP (8),
     #           MMCP (9), MPIP (10), MDIP (11), MTIP (12),
@@ -126,7 +125,7 @@ class HandTracker:
         self.net.setInput(net_input)
 
         pred = self.net.forward()
-        print("Time taken by network : {:.3f}".format(time.time() - t))
+        print("Time taken by network : {:.2f} secs".format(time.time() - t))
 
         points = self.get_keypoints(pred)
 
@@ -136,7 +135,7 @@ class HandTracker:
         points3D = to_iccv_format(points3D)
 
         if self.visualize:
-            self.draw(points)
+            self.draw_image(points)
 
         return points3D
 
@@ -190,7 +189,7 @@ class HandTracker:
 
         return points_3D
 
-    def draw(self, points):
+    def draw_image(self, points):
         # Draw the keypoints
         rgb_keypoints = np.copy(self.rgb_image)
         for i in range(len(points)):
@@ -234,5 +233,7 @@ if __name__ == '__main__':
     args.object_anno_path = '/home/tpatten/Data/Hands/HANDS_Challenge_ICCV_2019/Task3/training_object_annotation_small.txt'
     args.frame_root_path = '/home/tpatten/Data/Hands/HANDS_Challenge_ICCV_2019/Task3/training_images_small/'
     args.depth_frame_root_path = '/home/tpatten/Data/Hands/HANDS_Challenge_ICCV_2019/Task3/training_images_depth/'
+
+    print(args)
 
     hand_tracker = HandTracker(args)
