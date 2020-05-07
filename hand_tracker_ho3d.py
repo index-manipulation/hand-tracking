@@ -164,7 +164,7 @@ class HandTracker:
                 save_filename = save_filename.replace(".png", ".pkl")
                 with open(save_filename, 'wb') as f:
                     save_data = {}
-                    save_data['handJoints3D'] = p3d + np.asarray([0.7, 0001.1, -0074.5])
+                    save_data['handJoints3D'] = (p3d + np.asarray([0.7, 0001.1, -0074.5])) / 1000
                     save_data['handJoints2D'] = self.p2d
                     save_data['score'] = score
                     pickle.dump(save_data, f)
