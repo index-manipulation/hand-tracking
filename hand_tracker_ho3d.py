@@ -63,7 +63,7 @@ def to_iccv_format(joints):
 
 class HandTracker:
     def __init__(self, args):
-        self.clb = OpenCVCalib2CameraMeta(LoadOpenCVCalib("res/calib_hands_task3.json"))
+        self.clb = OpenCVCalib2CameraMeta(LoadOpenCVCalib("res/calib_ho3d.json"))
         self.config = {
             "model": "models/hand_skinned.xml", "model_left": False,
             "model_init_pose": [-109.80840809323652, 95.70022984677065, 584.613931114289, 292.3322807284121,
@@ -164,7 +164,7 @@ class HandTracker:
                 save_filename = save_filename.replace(".png", ".pkl")
                 with open(save_filename, 'wb') as f:
                     save_data = {}
-                    save_data['handJoints3D'] = p3d
+                    save_data['handJoints3D'] = p3d + np.asarray([0.7, 0001.1, -0074.5])
                     save_data['handJoints2D'] = self.p2d
                     save_data['score'] = score
                     pickle.dump(save_data, f)
