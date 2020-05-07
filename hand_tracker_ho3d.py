@@ -33,6 +33,7 @@ def to_iccv_format(joints):
     #           MMCP (9), MPIP (10), MDIP (11), MTIP (12),
     #           RMCP (13), RPIP (14), RDIP (15), RTIP (16),
     #           PMCP (17), PPIP (18), PDIP (19), PTIP (20)]
+
     # ICCV     [Wrist,
     #           TMCP, IMCP, MMCP, RMCP, PMCP,
     #           TPIP, TDIP, TTIP,
@@ -40,7 +41,19 @@ def to_iccv_format(joints):
     #           MPIP, MDIP, MTIP,
     #           RPIP, RDIP, RTIP,
     #           PPIP, PDIP, PTIP]
-    joint_map = [0, 1, 5, 9, 13, 17, 2, 3, 4, 6, 7, 8, 10, 11, 12, 14, 15, 16, 18, 19, 20]
+
+    # joint_map = [0, 1, 5, 9, 13, 17, 2, 3, 4, 6, 7, 8, 10, 11, 12, 14, 15, 16, 18, 19, 20]
+
+    # HO3D     [Wrist,
+    #           IMCP, IPIP, IDIP,
+    #           MMCP, MPIP, MDIP,
+    #           PMCP, PPIP, PDIP
+    #           RMCP, RPIP, RDIP,
+    #           TMCP, TPIP, TDIP,
+    #           TTIP, ITIP, MTIP, RTIP, PTIP]
+
+    joint_map = [0, 5, 6, 7, 9, 10, 11, 17, 18, 19, 13, 14, 15, 1, 2, 3, 4, 8, 12, 16, 20]
+
     iccv_joints = np.zeros(joints.shape)
     for i in range(len(joints)):
         iccv_joints[i, :] = joints[joint_map[i], :]
@@ -152,6 +165,7 @@ class HandTracker:
                 with open(save_filename, 'wb') as f:
                     save_data = {}
                     save_data['handJoints3D'] = p3d
+                    save_data['handJoints2D'] = self.p2d
                     save_data['score'] = score
                     pickle.dump(save_data, f)
 
@@ -285,7 +299,7 @@ if __name__ == '__main__':
     args.ho3d_path = '/home/tpatten/v4rtemp/datasets/HandTracking/HO3D_v2/'
     args.models_path = '/home/tpatten/v4rtemp/datasets/HandTracking/HO3D_v2/models'
     args.visualize = True
-    args.save = False
+    args.save = True
     args.with_renderer = False
     args.track = True
     args.paused = True
