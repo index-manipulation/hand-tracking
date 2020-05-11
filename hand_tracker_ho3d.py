@@ -94,6 +94,7 @@ class HandTracker:
         self.paused = args.paused
         self.visualize = args.visualize
         self.save = args.save
+        self.start_frame = args.start_frame
 
         if args.save:
             self.save_path = os.path.join(args.ho3d_path, 'train', args.target, 'hand_tracker')
@@ -132,9 +133,8 @@ class HandTracker:
 
     def mono_hand_loop(self):
         print("Entering main Loop")
-        saved_hand_poses = []
-        saved_framed_ids = []
         file_list = sorted(os.listdir(self.rgb_path))
+        file_list = file_list[self.start_frame:]
         for im in file_list:
             # Get the image
             frame_path = os.path.join(self.rgb_path, im)
@@ -144,6 +144,9 @@ class HandTracker:
             st = time.time()
             result_pose, hand, score = self.estimate_hand_pose(bgr)
             print('Score for frame {}: {}'.format(im, score))
+
+            if result_pose is None or hand is None:
+                continue
 
             # 2D visualization
             if self.visualize:
@@ -182,6 +185,7 @@ class HandTracker:
         if self.started:
             if self.bbox is None:
                 self.bbox = detector_utils.hand_bbox(bgr, self.detection_graph, self.sess)
+                print('Bounding box is None')
                 if self.bbox is None:
                     cv2.imshow("2D CNN estimation", bgr)
                     cv2.waitKey(1)
@@ -293,16 +297,23 @@ class HandTracker:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Hand pose estimator for HO3D dataset')
-    parser.add_argument("-target", type=str, help="Name of the target subset",
-                        choices=['ABF10', 'BB10', 'GPMF10', 'GSF10', 'MDF10', 'ShSu10'], default='ABF10')
+    parser.add_argument("-target", type=str, help="Name of the target subset", default='ABF10')
     args = parser.parse_args()
     args.ho3d_path = '/home/tpatten/v4rtemp/datasets/HandTracking/HO3D_v2/'
     args.models_path = '/home/tpatten/v4rtemp/datasets/HandTracking/HO3D_v2/models'
     args.visualize = True
-    args.save = True
+    args.save = False
     args.with_renderer = False
     args.track = True
     args.paused = True
+    args.start_frame = 0
+
+    # Start frames:
+    # ABF10 = 0, BB10 = 0, GPMF10 = 200, GSF10 = 0, MDF10 = 180, ShSu10 = 10
+    # ABF11 = 180, BB11 = XX, GPMF11 = 0, GSF11 = 165, MDF11 = 300, ShSu11 = XX
+    # ABF12 = 0, BB12 = XX, GPMF12 = 0, GSF12 = 0, MDF12 = 0, ShSu12 = 0
+    # ABF13 = 700, BB13 = 180, GPMF13 = 0, GSF13 = 120, MDF13 = 0, ShSu13 = 0
+    # ABF14 = 550, BB14 = XX, GPMF14 = XX, GSF14 = XX, MDF14 = XX, ShSu14 = XX
 
     print(args)
 
