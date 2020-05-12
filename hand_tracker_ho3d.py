@@ -88,7 +88,6 @@ class HandTracker:
         }
 
         self.ho3d_path = args.ho3d_path
-        self.models_path = args.models_path
         self.with_renderer = args.with_renderer
         self.track = args.track
         self.paused = args.paused
@@ -300,7 +299,6 @@ if __name__ == '__main__':
     parser.add_argument("-target", type=str, help="Name of the target subset", default='ABF10')
     args = parser.parse_args()
     args.ho3d_path = '/home/tpatten/v4rtemp/datasets/HandTracking/HO3D_v2/'
-    args.models_path = '/home/tpatten/v4rtemp/datasets/HandTracking/HO3D_v2/models'
     args.visualize = True
     args.save = False
     args.with_renderer = False
