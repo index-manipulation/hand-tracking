@@ -306,17 +306,14 @@ class HandTracker:
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Hand pose estimator for HO3D dataset')
     args = parser.parse_args()
-    args.data_path = '/home/tpatten/Data/ICAS2020/Rosbags/005_tomato_soup_can/2020-06-16-11-46-35'
+    args.data_path = '/home/tpatten/Data/ICAS2020/Rosbags/035_power_drill/2020-06-30-14-22-07'
     args.visualize = True
-    args.save = True
+    args.save = False
     args.with_renderer = False
     args.track = True
     args.paused = True
-    args.start_frame = 2
+    args.start_frame = 4
     args.repeat_first_frame = 10
-
-    # Start frames:
-    # 005_tomato_soup_can/2020-06-16-11-46-35 = 0002
 
     print(args)
 
