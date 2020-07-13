@@ -25,6 +25,12 @@ Run the container and add the repo and dataset files.
 docker run --runtime=nvidia -it --network=host -e DISPLAY=$DISPLAY -v /usr/lib/nvidia-(version installed):/usr/lib/nvidia-(version installed) -v /usr/lib32/nvidia-(version installed):/usr/lib32/nvidia-418 -v /tmp/.X11-unix/:/tmp/.X11-unix -v /path/to/repo:/code -v /path/to/rosbags:/dataset -w /code --privileged hand-tracker-ralli bash
 ```
 
+or
+
+```bash
+nvidia-docker run -it --network=host -e DISPLAY=$DISPLAY -v /usr/lib/nvidia-(version installed):/usr/lib/nvidia-(version installed) -v /usr/lib32/nvidia-(version installed):/usr/lib32/nvidia-418 -v /tmp/.X11-unix/:/tmp/.X11-unix -v /path/to/repo:/code -v /path/to/rosbags:/dataset -w /code --privileged hand-tracker-ralli bash
+```
+
 ## Simple-ros-wrapper Usage
 *simple-ros-wrapper.py* will subscribe to a given camera topic expecting image messages, and will publish XYZ for all the joints as a __float32MultiArray__ message which must be reshaped to (21,3). 
 
@@ -63,3 +69,16 @@ python plotter/plotter-xyz-wrist.py /path/to/baseline.csv /path/to/result.csv
 <img src="res/figure_1.png" height="500" caption="siodfjiosjdf">
 
 *comparator output for experiment 1. __red line__ is the hand tracker result and the __blue line__ is the baseline using LeapMotion capture system*
+
+## Troubleshooting
+Cannot find PyCeresIK
+```
+Traceback (most recent call last):
+  File "handpose.py", line 17, in <module>
+    import PyCeresIK as IK
+ImportError: libCeresIK.so: cannot open shared object file: No such file or directory
+```
+Add the `lib` directory to the global library path
+```bash
+export LD_LIBRARY_PATH=<path_to_code>/hand-tracking/lib:$LD_LIBRARY_PATH
+```
