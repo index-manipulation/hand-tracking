@@ -66,6 +66,7 @@ def mono_hand_loop(acq, outSize, config, track=False, paused=False, with_rendere
     print("Entering main Loop.")
     # bbox = config['default_bbox']
     while True:
+        print('Estimating pose for frame {}'.format(count))
         try:
             imgs, clbs = acq.grab()
             
@@ -277,7 +278,7 @@ if __name__ == '__main__':
     # acq = OpenCVGrabber(0, calib_file="res/calib_webcam_mshd_vga.json")
 
     # transform = pkl.load(open('transform1.pkl','rb'))
-    acq = OpenCVGrabber('/dataset/hand_example/hand_example_video_only/output.avi', calib_file="res/calib_webcam_mshd_vga.json")
+    acq = OpenCVGrabber('/dataset/hand_example/hand_example_video_only/alitrial.avi', calib_file="res/calib_webcam_mshd_vga.json")
     #acq = OpenCVGrabber(1, calib_file="res/calib_webcam_mshd_vga.json")
 
     acq.initialize()

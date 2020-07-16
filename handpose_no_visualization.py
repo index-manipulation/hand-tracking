@@ -78,6 +78,8 @@ def mono_hand_loop(acq, config, output_file, track=False):
         if started:
             if bbox is None:
                 bbox = detector_utils.hand_bbox(bgr, detection_graph, sess)
+                if bbox is None:
+                    continue
             else:
                 dbox = detector_utils.hand_bbox(bgr, detection_graph, sess)
                 if dbox is not None:
@@ -221,7 +223,7 @@ if __name__ == '__main__':
         # "default_bbox": [322, 368, 110, 109],
     }
 
-    video_filename = '/dataset/hand_example/hand_example_video_only/output.avi'
+    video_filename = '/dataset/hand_example/hand_example_video_only/alitrial.avi'
     save_filename = '/code/finger_joints.pkl'
 
     acq = OpenCVGrabber(video_filename, calib_file="res/calib_webcam_mshd_vga.json")
